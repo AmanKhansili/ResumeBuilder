@@ -9,7 +9,7 @@ Build an AI-based Resume Builder app using React, Vite, Tailwind CSS, Strapi, an
 - 📊 Utilize Strapi for effective data management.
 - 🎨 Customize themes with Tailwind CSS.
 - 📄 Generate professional resumes with real-time previews.
-- 📦 Deploy the application effortlessly on Hostinger.
+- 📦 Deploy the application effortlessly on [Hosting website Name].
 - 🤖 Integrate AI for enhanced resume summaries.
 
 ### Key Insights
@@ -19,5 +19,5 @@ Build an AI-based Resume Builder app using React, Vite, Tailwind CSS, Strapi, an
 - 📈 **Dynamic Data Handling**: Using Strapi allows for efficient data management, enabling users to create, edit, and retrieve their resumes seamlessly.
 - 🎨 **Flexible Design Options**: Tailwind CSS empowers developers to create visually appealing layouts quickly, enhancing the overall aesthetic of the application.
 - ⚙️ **Real-Time Updates**: The app's ability to reflect changes instantly in the preview fosters a more interactive user experience, allowing users to see immediate results.
-- 🌐 **Easy Deployment**: Utilizing Hostinger simplifies the deployment process, making it easier for developers to launch their applications without hassle.
+- 🌐 **Easy Deployment**: Utilizing [....] simplifies the deployment process, making it easier for developers to launch their applications without hassle.
 - 🤖 **AI Integration**: Leveraging AI to generate resume summaries adds value to the app, providing users with tailored content that enhances their job applications.
