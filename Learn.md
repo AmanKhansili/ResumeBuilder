@@ -14,7 +14,6 @@ Also i learn how to use the cleark authentication for thiswe are using a diffren
 
 ---
 
-
 ## **Strapi CMS**
 
 strapi cms is used for backend where we store our data nad fetch our data. It help us to create a api.And we connect this strapi cms with the mySQL database.
@@ -33,3 +32,7 @@ strapi cms is used for backend where we store our data nad fetch our data. It he
 # Tools Used
 
 ![Screenshot 2023-04-05 111833](https://user-images.githubusercontent.com/100932107/230000972-0dbf94a5-4064-4180-9638-dd4835cc70ad.png)
+
+## Learning
+
+- resumeInfo?.firstName will return undefined if resumeInfo is null or undefined, rather than throwing an error.(2:00:00)
