@@ -13,11 +13,9 @@ const Dashboard = () => {
 
   // used to get the users resumeList
   const GetResumesList = () => {
-    GlobalApi.GetUserResumes(user?.primaryEmailAddress?.emailAddress).then(
-      (response) => {
-        setResumeList(response.data.data);
-      }
-    );
+    GlobalApi.GetUserResumes(user?.primaryEmailAddress?.emailAddress).then((response) => {
+      setResumeList(response.data.data);
+    });
   };
   return (
     <div className="p-10 md:px-20 lg:px-32">
@@ -26,9 +24,7 @@ const Dashboard = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mt-10 gap-5">
         <AddResume />
         {resumeList.length > 0 &&
-          resumeList.map((resume, index) => (
-            <ResumeCardItem resume={resume} key={index} />
-          ))}
+          resumeList.map((resume, index) => <ResumeCardItem resume={resume} key={index} />)}
       </div>
     </div>
   );
