@@ -38,9 +38,7 @@ function AddResume() {
         console.log(resp.data.data.documentId);
         if (resp) {
           setLoading(false);
-          navigation(
-            "/dashboard/resume/" + resp.data.data.documentId + "/edit"
-          );
+          navigation("/dashboard/resume/" + resp.data.data.documentId + "/edit");
         }
       },
       (error) => {
@@ -78,10 +76,7 @@ function AddResume() {
               <Button onClick={() => setOpenDialog(false)} variant="ghost">
                 Cancel
               </Button>
-              <Button
-                disabled={!resumeTitle || loading}
-                onClick={() => onCreate()}
-              >
+              <Button disabled={!resumeTitle || loading} onClick={() => onCreate()}>
                 {loading ? <Loader2 className="animate-spin" /> : "Create"}
               </Button>
             </div>
