@@ -3,6 +3,7 @@ import "./App.css";
 import { Navigate, Outlet } from "react-router-dom"; // Importing `Navigate` and `Outlet` components from react-router-dom
 import { RedirectToSignIn, useUser } from "@clerk/clerk-react"; // Importing the `useUser` hook from Clerk
 import Header from "./components/custom/Header";
+import { Toaster } from "./components/ui/sonner";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -17,6 +18,7 @@ function App() {
     <>
       <Header />
       <Outlet />
+      <Toaster />
     </>
   );
 }
