@@ -1,19 +1,20 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { ClerkProvider } from "@clerk/clerk-react";
-
+import React from "react";
+import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import SignInPage from "./auth/sign-in/index.jsx";
-import Home from "./home/Home.jsx";
-import Dashboard from "./dashboard/Dashboard.jsx";
-import EditResume from "./dashboard/resume/[resumeId]/edit/EditResume.jsx";
+import Home from "./home/index.jsx";
+import Dashboard from "./dashboard/index.jsx";
+import { ClerkProvider } from "@clerk/clerk-react";
+import EditResume from "./dashboard/resume/[resumeId]/edit/index.jsx";
 
-//import the clerk publishable key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
-
 const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
   {
     element: <App />,
     children: [
@@ -27,19 +28,17 @@ const router = createBrowserRouter([
       },
     ],
   },
-  {
-    path: "/",
-    element: <Home />,
-  },
+  ,
   {
     path: "/auth/sign-in",
     element: <SignInPage />,
   },
 ]);
-createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
       <RouterProvider router={router} />
     </ClerkProvider>
-  </StrictMode>
+  </React.StrictMode>
 );
