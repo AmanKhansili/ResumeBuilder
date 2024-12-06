@@ -2,23 +2,25 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ResumeInfoContext } from "@/context/ResumeInfoContext";
 import { LoaderCircle } from "lucide-react";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import GlobalApi from "./../../../../../service/GlobalApi";
 import { toast } from "sonner";
 
-const PersonalDetail = ({ enableNext }) => {
+function PersonalDetail({ enabledNext }) {
   const params = useParams();
-
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
 
   const [formData, setFormData] = useState();
-
   const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    console.log("---", resumeInfo);
+  }, []);
 
   const handleInputChange = (e) => {
-    enableNext(false);
+    enabledNext(false);
     const { name, value } = e.target;
+
     setFormData({
       ...formData,
       [name]: value,
@@ -28,23 +30,24 @@ const PersonalDetail = ({ enableNext }) => {
       [name]: value,
     });
   };
+
   const onSave = (e) => {
     e.preventDefault();
     setLoading(true);
-
     const data = {
       data: formData,
     };
-
-    GlobalApi.UpdateResumeDetail(params?.resumeId, data).then((resp) => {
-      console.log(resp);
-      enableNext(true);
-      setLoading(false);
-      toast("Details Updated");
-    },
+    GlobalApi.UpdateResumeDetail(params?.resumeId, data).then(
+      (resp) => {
+        console.log(resp);
+        enabledNext(true);
+        setLoading(false);
+        toast("Details updated");
+      },
       (error) => {
         setLoading(false);
-      });
+      }
+    );
   };
   return (
     <div className="p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10">
@@ -57,9 +60,9 @@ const PersonalDetail = ({ enableNext }) => {
             <label className="text-sm">First Name</label>
             <Input
               name="firstName"
+              defaultValue={resumeInfo?.firstName}
               required
               onChange={handleInputChange}
-              defaultValue={resumeInfo?.firstName}
             />
           </div>
           <div>
@@ -76,8 +79,8 @@ const PersonalDetail = ({ enableNext }) => {
             <Input
               name="jobTitle"
               required
-              onChange={handleInputChange}
               defaultValue={resumeInfo?.jobTitle}
+              onChange={handleInputChange}
             />
           </div>
           <div className="col-span-2">
@@ -85,8 +88,8 @@ const PersonalDetail = ({ enableNext }) => {
             <Input
               name="address"
               required
-              onChange={handleInputChange}
               defaultValue={resumeInfo?.address}
+              onChange={handleInputChange}
             />
           </div>
           <div>
@@ -94,8 +97,8 @@ const PersonalDetail = ({ enableNext }) => {
             <Input
               name="phone"
               required
-              onChange={handleInputChange}
               defaultValue={resumeInfo?.phone}
+              onChange={handleInputChange}
             />
           </div>
           <div>
@@ -103,12 +106,11 @@ const PersonalDetail = ({ enableNext }) => {
             <Input
               name="email"
               required
-              onChange={handleInputChange}
               defaultValue={resumeInfo?.email}
+              onChange={handleInputChange}
             />
           </div>
         </div>
-
         <div className="mt-3 flex justify-end">
           <Button type="submit" disabled={loading}>
             {loading ? <LoaderCircle className="animate-spin" /> : "Save"}
@@ -117,7 +119,6 @@ const PersonalDetail = ({ enableNext }) => {
       </form>
     </div>
   );
-};
+}
 
 export default PersonalDetail;
-//2:39:00

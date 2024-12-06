@@ -65,11 +65,11 @@ function Experience() {
     setLoading(true);
     const data = {
       data: {
-        Experience: experinceList.map(({ id, ...rest }) => rest),
+        experience: experinceList.map(({ id, ...rest }) => rest),
       },
     };
 
-    console.log(experinceList);
+    console.log("Data being sent:", JSON.stringify(data, null, 2));
 
     GlobalApi.UpdateResumeDetail(params?.resumeId, data).then(
       (res) => {
@@ -79,6 +79,7 @@ function Experience() {
       },
       (error) => {
         setLoading(false);
+        console.log("Error response:", error.response);
       }
     );
   };

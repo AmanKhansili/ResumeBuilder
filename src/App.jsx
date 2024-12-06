@@ -1,17 +1,17 @@
 import { useState } from "react";
 import "./App.css";
-import { Navigate, Outlet } from "react-router-dom"; // Importing `Navigate` and `Outlet` components from react-router-dom
-import { RedirectToSignIn, useUser } from "@clerk/clerk-react"; // Importing the `useUser` hook from Clerk
+import { Button } from "./components/ui/button";
+import { Navigate, Outlet } from "react-router-dom";
+import { useUser } from "@clerk/clerk-react";
 import Header from "./components/custom/Header";
 import { Toaster } from "./components/ui/sonner";
 
 function App() {
   const [count, setCount] = useState(0);
-  const { user, isLoaded, isSignedIn } = useUser(); // Destructuring values from the `useUser` hook
+  const { user, isLoaded, isSignedIn } = useUser();
 
-  // Checking if the user is not signed in and the user data is loaded
-  if (!isSignedIn) {
-    return <RedirectToSignIn />; // Redirecting to the sign-in page if the user is not signed in
+  if (!isSignedIn && isLoaded) {
+    return <Navigate to={"/auth/sign-in"} />;
   }
 
   return (

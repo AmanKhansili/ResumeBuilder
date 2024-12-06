@@ -22,12 +22,12 @@ import { AIChatSession } from "./../../../../service/AIModal";
 import { toast } from "sonner";
 
 const PROMPT =
-  "position titile: {positionTitle} , Depends on position title give me 5-7 bullet points for my experience in resume (Please do not add experince level and No JSON array) , give me result in HTML tags";
+  "position titile: {positionTitle} , Depends on position title give me 5-7 bullet points for my experience in resume (Please do not add experince level and No JSON array) , give me result in HTML tags.";
 function RichTextEditor({ onRichTextEditorChange, index, defaultValue }) {
   const [value, setValue] = useState(defaultValue);
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
   const [loading, setLoading] = useState(false);
-  
+
   const GenerateSummeryFromAI = async () => {
     if (!resumeInfo?.Experience[index]?.title) {
       toast("Please Add Position Title");
@@ -39,7 +39,16 @@ function RichTextEditor({ onRichTextEditorChange, index, defaultValue }) {
     const result = await AIChatSession.sendMessage(prompt);
     console.log(result.response.text());
     const resp = result.response.text();
-    setValue(resp.replace("[", "").replace("]", ""));
+    setValue(
+      resp
+        .replace(/"bulletPoints":\s*\[(.*?)\]/, "$1")
+        .replace(/\[|\]|\{|\}/g, "")
+        .replace(/\n/g, "")
+        .replace(/\s+/g, " ")
+        .replace(/"/g, "") // Remove '"'
+        .replace(/,/g, "")
+        .trim()
+    );
     setLoading(false);
   };
 

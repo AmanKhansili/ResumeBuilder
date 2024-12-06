@@ -142,11 +142,9 @@ function Education() {
       <div className="flex justify-between">
         <div className="flex gap-2">
           <Button variant="outline" onClick={AddNewEducation} className="text-primary">
-            {" "}
             + Add More Education
           </Button>
           <Button variant="outline" onClick={RemoveEducation} className="text-primary">
-            {" "}
             - Remove
           </Button>
         </div>

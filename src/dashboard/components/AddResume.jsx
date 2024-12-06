@@ -65,7 +65,7 @@ function AddResume() {
           <DialogHeader>
             <DialogTitle>Create New Resume</DialogTitle>
             <DialogDescription>
-              <span>Add a title for your new resume</span>
+              <p>Add a title for your new resume</p>
               <Input
                 className="my-2"
                 placeholder="Ex.Full Stack resume"
