@@ -17,7 +17,7 @@ function ExperiencePreview({ resumeInfo }) {
         }}
       />
 
-      {resumeInfo?.Experience?.map((experience, index) => (
+      {resumeInfo?.experience?.map((experience, index) => (
         <div key={index} className="my-5">
           <h2
             className="text-sm font-bold"
@@ -30,8 +30,8 @@ function ExperiencePreview({ resumeInfo }) {
           <h2 className="text-xs flex justify-between">
             {experience?.companyName},{experience?.city},{experience?.state}
             <span>
-              {experience?.startDate} To{" "}
-              {experience?.currentlyWorking ? "Present" : experience.endDate}{" "}
+              {experience?.startDate} To
+              {experience?.currentlyWorking ? "Present" : experience.endDate}
             </span>
           </h2>
           {/* <p className='text-xs my-2'>
