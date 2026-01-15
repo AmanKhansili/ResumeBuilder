@@ -5,20 +5,23 @@ function ExperiencePreview({ resumeInfo }) {
   if (!resumeInfo || !resumeInfo.experience || resumeInfo.experience.length === 0) {
     return <p>No experience data available.</p>;
   }
-
+  function check() {
+    console.log(resumeInfo.experience);
+  }
+  check();
   return (
     <div className="my-6">
       <h2
         className="text-center font-bold text-sm mb-2"
         style={{
-          color: resumeInfo?.themeColor || '#000', // Default to black if no themeColor
+          color: resumeInfo?.themeColor || "#000", // Default to black if no themeColor
         }}
       >
         Professional Experience
       </h2>
       <hr
         style={{
-          borderColor: resumeInfo?.themeColor || '#000', // Default to black if no themeColor
+          borderColor: resumeInfo?.themeColor || "#000", // Default to black if no themeColor
         }}
       />
 
@@ -27,7 +30,7 @@ function ExperiencePreview({ resumeInfo }) {
           <h2
             className="text-sm font-bold"
             style={{
-              color: resumeInfo?.themeColor || '#000', // Default to black if no themeColor
+              color: resumeInfo?.themeColor || "#000", // Default to black if no themeColor
             }}
           >
             {experience?.title || "Position Title Not Provided"}

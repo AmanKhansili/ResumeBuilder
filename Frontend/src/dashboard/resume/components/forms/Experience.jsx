@@ -57,7 +57,7 @@ function Experience() {
       ...resumeInfo,
       Experience: experinceList,
     });
-  }, [experinceList]);
+  }, []);
 
   const onSave = () => {
     setLoading(true);
