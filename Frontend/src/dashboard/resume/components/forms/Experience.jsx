@@ -55,9 +55,9 @@ function Experience() {
   useEffect(() => {
     setResumeInfo({
       ...resumeInfo,
-      Experience: experinceList,
+      experience: experinceList,
     });
-  }, []);
+  }, [experinceList]);
 
   const onSave = () => {
     setLoading(true);
